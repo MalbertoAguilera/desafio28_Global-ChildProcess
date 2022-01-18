@@ -17,6 +17,7 @@ const listarMensajesNormalizados = require("./utils/listarMensajesNormalizados")
 const objectSession = require("./config/session");
 const session = require("express-session");
 const path = require ("path");
+const dotenv = require("dotenv").config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

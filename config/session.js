@@ -1,9 +1,10 @@
 const MongoStore = require('connect-mongo');
+const dotenv = require("dotenv").config();
 
 module.exports = {
   // store: MongoStore.create({ mongoUrl: config.mongoLocal.cnxStr }),
-  store: MongoStore.create({ mongoUrl: 'mongodb+srv://matias:atlas1234@sessionatlas.jvq29.mongodb.net/ecommerceUsers?retryWrites=true&w=majority' }),
-  secret: "miClave1234",
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URL}),
+  secret: process.env.MONGO_SECRET_KEY,
   resave: false,
   saveUninitialized: false,
   rolling: true,
