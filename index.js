@@ -6,7 +6,7 @@ const http = require("http");
 const server = http.createServer(app);
 const io = require("socket.io")(server);
 // FIN configuracion websocket
-const PORT = 3000 || process.env.PORT;
+
 const Contenedor = require("./class/Contenedor");
 const filePathProducts = "./db/productos.txt";
 const filePathMessages = "./db/messages.txt";
@@ -18,6 +18,13 @@ const objectSession = require("./config/session");
 const session = require("express-session");
 const path = require ("path");
 const dotenv = require("dotenv").config();
+
+const parseArg = require("minimist");
+const options = {default:{PORT:8080}}
+const objectMinimist = parseArg(process.argv.slice(2),options);
+console.log(objectMinimist);
+const PORT = objectMinimist.PORT ;//pasar como --PORT=(numero)
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
