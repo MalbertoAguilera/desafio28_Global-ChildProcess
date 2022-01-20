@@ -18,6 +18,7 @@ const objectSession = require("./config/session");
 const session = require("express-session");
 const path = require ("path");
 const dotenv = require("dotenv").config();
+const objectInfo = require("./config/ObjectInfo")
 
 const parseArg = require("minimist");
 const options = {default:{PORT:8080}}
@@ -25,6 +26,7 @@ const objectMinimist = parseArg(process.argv.slice(2),options);
 console.log(objectMinimist);
 const PORT = objectMinimist.PORT ;//pasar como --PORT=(numero)
 
+console.log(objectInfo);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -61,6 +63,10 @@ io.on("connection", async (socket) => {
       listarMensajesNormalizados(await handlerMessages.getAll())
     );
   });
+});
+
+app.get("/info", (req, res) => {
+  res.json(objectInfo);
 });
 
 app.get("/api/productos-test", (req, res) => {
