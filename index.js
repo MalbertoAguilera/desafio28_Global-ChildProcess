@@ -26,6 +26,8 @@ const objectMinimist = parseArg(process.argv.slice(2),options);
 console.log(objectMinimist);
 const PORT = objectMinimist.PORT ;//pasar como --PORT=(numero)
 
+const apiRandom = require("./routes/numerosAleatorios");
+
 console.log(objectInfo);
 
 app.use(express.json());
@@ -34,6 +36,8 @@ app.use(express.static('public'));
 app.set("view engine", "ejs");
 
 app.use(session(objectSession));
+
+app.use(apiRandom);
 
 //websocket
 //abre canal de parte del servidor

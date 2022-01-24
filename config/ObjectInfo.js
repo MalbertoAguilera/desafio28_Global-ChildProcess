@@ -4,5 +4,5 @@ module.exports = {
       processID : process.pid,
       versionNodeJS : process.version,
       nombreDePlataforma : process.platform,
-      memoriaTotalReservada : process.memoryUsage()
+      memoriaTotalReservada : process.memoryUsage().rss
 }
